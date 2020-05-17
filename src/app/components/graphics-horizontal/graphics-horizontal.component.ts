@@ -1,11 +1,11 @@
-import { Component } from "@angular/core";
+import { Component, OnDestroy } from "@angular/core";
 
 @Component({
   selector: "app-graphics-horizontal",
   templateUrl: "./graphics-horizontal.component.html",
   styleUrls: ["./graphics-horizontal.component.css"],
 })
-export class GraphicsHorizontalComponent {
+export class GraphicsHorizontalComponent implements OnDestroy {
   results: any[] = [
     {
       name: "Juego 1",
@@ -39,9 +39,11 @@ export class GraphicsHorizontalComponent {
 
   colorScheme = "nightLights";
 
+  interval;
+
   constructor() {
 
-    setInterval( () => {
+    this.interval = setInterval( () => {
       console.log('tick');
 
       const newResults = [...this.results];
@@ -58,5 +60,9 @@ export class GraphicsHorizontalComponent {
 
   onSelect(event) {
     console.log(event);
+  }
+
+  ngOnDestroy(){
+    clearInterval(this.interval)
   }
 }
