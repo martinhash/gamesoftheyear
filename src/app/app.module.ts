@@ -10,7 +10,6 @@ import { GotyComponent } from './pages/goty/goty.component';
 //MODULES
 import { ComponentsModule } from './components/components.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,
